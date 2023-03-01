@@ -51,7 +51,7 @@ except:
     #     except:
     #         print("dont need verify")
 
-WebDriverWait(driver, 60).until(
+WebDriverWait(driver, 600).until(
     EC.presence_of_element_located(
         (By.CLASS_NAME, "pcmall-dailycheckin_veN--o"))
 )
