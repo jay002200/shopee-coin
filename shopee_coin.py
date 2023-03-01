@@ -9,13 +9,10 @@ import configparser
 
 config = configparser.ConfigParser()
 config.read('config.ini')
-user = config.get('info','account')
-pwd = config.get('info','passwd')
+user = config.get('info', 'account')
+pwd = config.get('info', 'passwd')
 
 
-
-# edge_option = Options()
-# edge_option.add_extension('C:/Users/goldcity55/Desktop/language/extension_3_14_1_0.crx')
 driver = webdriver.Chrome()
 driver.get(
     "https://shopee.tw/buyer/login?next=https%3A%2F%2Fshopee.tw%2Fshopee-coins")
@@ -36,13 +33,13 @@ except:
 time.sleep(3)
 
 try:
-    verify_button = driver.find_element(By.XPATH,'//*[@id="main"]/div/div[2]/div/div/div/div[1]/div/div[2]/div/button')
+    verify_button = driver.find_element(
+        By.XPATH, '//*[@id="main"]/div/div[2]/div/div/div/div[1]/div/div[2]/div/button')
     if(verify_button):
         verify_button.click()
 except:
     print("don't need verify")
-    
-    
+
     # try:
     #     verifybutton = driver.find_element(By.XPATH,'//*[@id="main"]/div/div[2]/div/div/div/div[1]/div/div[2]/div/button')
     #     try:
@@ -58,5 +55,9 @@ WebDriverWait(driver, 60).until(
     EC.presence_of_element_located(
         (By.CLASS_NAME, "pcmall-dailycheckin_veN--o"))
 )
-driver.find_element(
-    By.CSS_SELECTOR, 'button[class="pcmall-dailycheckin_3uUmyu"]').click()
+time.sleep(3)
+try:
+    coinbutton = driver.find_element(By.XPATH, '//*[@id="main"]/div/div[2]/div/main/section[1]/div[1]/div/section/div[2]/button')
+    coinbutton.click()
+except:
+    print("error")
